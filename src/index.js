@@ -1,4 +1,4 @@
-/**
+/*
  * LightningChartJS example that showcases AreaRangeSeries.
  */
 // Import LightningChartJS
