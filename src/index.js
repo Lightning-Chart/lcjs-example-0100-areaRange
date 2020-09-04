@@ -7,7 +7,8 @@ const lcjs = require('@arction/lcjs')
 // Extract required parts from LightningChartJS.
 const {
     lightningChart,
-    AxisTickStrategies
+    AxisTickStrategies,
+    Themes
 } = lcjs
 
 // Decide on an origin for DateTime axis.
@@ -15,14 +16,20 @@ const dateOrigin = new Date(2018, 0, 1)
 
 // Create a XY Chart.
 const chart = lightningChart().ChartXY({
-    defaultAxisXTickStrategy: AxisTickStrategies.DateTime(dateOrigin)
+    // theme: Themes.dark
 })
-    .setTitle('Area Range')
-
+//Cache default X Axis for use.
 const axisX = chart.getDefaultAxisX()
-
+// Use DateTime TickStrategy, using the origin specified above.
+axisX
+    .setTickStrategy(
+        AxisTickStrategies.DateTime,
+        (tickStrategy) => tickStrategy.setDateOrigin(dateOrigin)
+    )
+chart.setTitle('Area Range')
+// Add AreaRange Series
 const areaRange = chart.addAreaRangeSeries()
-
+// Modify the ResultTable formatting.
 areaRange.setResultTableFormatter((builder, series, figure, yMax, yMin) => {
     return builder
         .addRow('Actual vs Expected Share Prices of Company')
@@ -32,7 +39,7 @@ areaRange.setResultTableFormatter((builder, series, figure, yMax, yMin) => {
 })
 chart.getDefaultAxisY()
     .setTitle('Share price ($)')
-
+// Data for the AreaRange Series
 let areaRangeData = [
     {
         x: 0, yMax: 24, yMin: -15
