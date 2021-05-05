@@ -30,7 +30,7 @@ chart.setTitle('Area Range')
 // Add AreaRange Series
 const areaRange = chart.addAreaRangeSeries()
 // Modify the ResultTable formatting.
-areaRange.setResultTableFormatter((builder, series, figure, yMax, yMin) => {
+areaRange.setCursorResultTableFormatter((builder, series, figure, yMax, yMin) => {
     return builder
         .addRow('Actual vs Expected Share Prices of Company')
         .addRow('Date: ' + axisX.formatValue(figure))
