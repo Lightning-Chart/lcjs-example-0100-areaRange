@@ -1,6 +1,6 @@
-# Area Range
+# JavaScript Area Range Chart
 
-![Area Range](areaRange.png)
+![JavaScript Area Range Chart](areaRange.png)
 
 This demo application belongs to the set of examples for LightningChart JS, data visualization library for JavaScript.
 
