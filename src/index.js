@@ -16,7 +16,7 @@ const dateOrigin = new Date(2018, 0, 1)
 
 // Create a XY Chart.
 const chart = lightningChart().ChartXY({
-    // theme: Themes.dark
+    // theme: Themes.darkGold
 })
 //Cache default X Axis for use.
 const axisX = chart.getDefaultAxisX()
