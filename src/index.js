@@ -2,7 +2,7 @@
  * LightningChartJS example that showcases AreaRangeSeries.
  */
 // Import LightningChartJS
-const lcjs = require('@arction/lcjs')
+const lcjs = require('@lightningchart/lcjs')
 
 // Extract required parts from LightningChartJS.
 const { lightningChart, AxisTickStrategies, Themes } = lcjs
@@ -10,32 +10,25 @@ const { lightningChart, AxisTickStrategies, Themes } = lcjs
 // Create a XY Chart.
 const chart = lightningChart({
             resourcesBaseUrl: new URL(document.head.baseURI).origin + new URL(document.head.baseURI).pathname + 'resources/',
-        }).ChartXY({
-    theme: Themes[new URLSearchParams(window.location.search).get('theme') || 'darkGold'] || undefined,
-}).setTitle('Area Range')
+        })
+    .ChartXY({
+        theme: Themes[new URLSearchParams(window.location.search).get('theme') || 'darkGold'] || undefined,
+    })
+    .setTitle('Area Range')
 
 //Cache default X Axis for use.
 const axisX = chart.getDefaultAxisX()
 
 // Use DateTime TickStrategy and set the interval
-axisX.setTickStrategy(AxisTickStrategies.DateTime)
-    .setInterval({
-        start: new Date(2018, 0, 1).getTime(),
-        end: new Date(2018, 11, 29).getTime()
-    })
+axisX.setTickStrategy(AxisTickStrategies.DateTime).setInterval({
+    start: new Date(2018, 0, 1).getTime(),
+    end: new Date(2018, 11, 29).getTime(),
+})
 
 // Add AreaRange Series
 const areaRange = chart.addAreaRangeSeries()
 
-// Modify the ResultTable formatting.
-areaRange.setCursorResultTableFormatter((builder, series, figure, yMax, yMin) => {
-    return builder
-        .addRow('Actual vs Expected Share Prices of Company')
-        .addRow('Date: ' + axisX.formatValue(figure))
-        .addRow('Actual: ' + yMax.toFixed(2) + ' $')
-        .addRow('Expected: ' + yMin.toFixed(2) + ' $')
-})
-chart.getDefaultAxisY().setTitle('Share price ($)')
+chart.getDefaultAxisY().setTitle('Share price').setUnits('$')
 
 // Data for the AreaRange Series
 let areaRangeData = [
