@@ -27,8 +27,8 @@ Range charts are generally used to show variations (low & high) simultaneously i
 
 The series uses two fill styles, which can be configured individually, the identical behavior is applicable for borders:
 
--   the normal fill is used when High is greater than Low
--   the reversed fill is used when Low is greater than High
+- the normal fill is used when High is greater than Low
+- the reversed fill is used when Low is greater than High
 
 ```javascript
 // Create a new ChartXY.
@@ -41,23 +41,17 @@ const areaRange = chart.addAreaRangeSeries()
 The series accepts **_AreaPoint_** type of points either as an object in format `{ position: number, high: number, low: number }`,
 
 ```javascript
-series.add({ position: 20, high: 45, low: -20 })
-```
-
-or via a factory that should be additionally imported.
-
-```javascript
-series.add(AreaPoint(20, 45, -20))
+series.appendJSON({ position: 20, high: 45, low: -20 })
 ```
 
 Any number of points can be added with a single call.
 
 ```javascript
 // Single point.
-series.add({ position: 20, high: 45, low: -20 })
+series.appendJSON({ position: 20, high: 45, low: -20 })
 
 // Multiple points at once.
-series.add([
+series.appendJSON([
     { position: 20, high: 45, low: -20 },
     { position: 40, high: 95, low: 10 },
     { position: 60, high: 25, low: 60 },
@@ -93,7 +87,7 @@ Direct developer email support can be purchased through a [Support Plan][4] or b
 © LightningChart Ltd 2009-2026. All rights reserved.
 
 
-[XY cartesian chart]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/ChartXY.html
-[Area point]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/interfaces/AreaPoint.html
-[Area Range series]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/AreaRangeSeries.html
+[XY cartesian chart]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/classes/ChartXY.html
+[Area point]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/interfaces/AreaPoint.html
+[Area Range series]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/classes/AreaRangeSeries.html
 

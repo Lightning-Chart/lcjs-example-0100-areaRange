@@ -307,6 +307,4 @@ let areaRangeData = [
     },
 ]
 
-areaRangeData.forEach((point, i) => {
-    areaRange.add({ position: point.x, high: point.yMax, low: point.yMin })
-})
+areaRange.appendJSON(areaRangeData)
